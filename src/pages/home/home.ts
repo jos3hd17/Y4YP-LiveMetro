@@ -147,7 +147,8 @@ googleMap(){
           var marker = new google.maps.Marker({
           position: places,
           map: map,
-          label: this.estaciones[i].nombre
+          label: this.estaciones[i].nombre,
+          icon: "home"
         });
         }
    var stations = [];
@@ -181,7 +182,7 @@ googleMap(){
       
 
 
-      var polyLineOptions ={path : stations, strokeColor: "#0000FF",strokeOpacity: 0.6, strokeWeight:4};
+      var polyLineOptions ={path : stations, strokeColor: "#45EF1B",strokeOpacity: 0.6, strokeWeight:4};
       var polyLine = new google.maps.Polyline(polyLineOptions);
       polyLine.setMap(map);
             
