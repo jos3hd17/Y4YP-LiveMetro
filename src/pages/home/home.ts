@@ -109,6 +109,13 @@ metro=[
        });
     })(marker,marker1);
   }
+  var placerLocation = {lat: 6.278863, lng: -75.553091 };
+  var markerLocation = new google.maps.Marker({
+    position:placerLocation,
+    map:map,
+    label:"Ubicacion actual",
+    icon: "https://img.weblogssl.com/css/applesfera/v7/images/avatar.png"
+});
   for (var i=0; i< this.establecimiento.length;i++){
           var placer = {lat: this.establecimiento[i].latitud, lng: this.establecimiento[i].longitud};
           var marker1 = this.establecimiento[i];
