@@ -14,6 +14,8 @@ export class HomePage {
 
   ubi: any;
   trenes:any;
+  estaciones:any;
+  info:any;
   constructor(public trenesProvider: TrenesProvider,public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController, public alertCtrl: AlertController ) {
     let that = this;
     setTimeout(function(){
@@ -21,217 +23,10 @@ export class HomePage {
     }, 2000)
     this.ubi = "6.244203, -75.581212";
     this.trenes = trenesProvider.obtenerTrenes();
+    this.estaciones =trenesProvider.obtenerEstaciones();
+    console.log(this.info);
   }
  
-estaciones =[
-        {
-          nombre: "Niquia",
-          latitude: 6.337804,
-          longitude:-75.544299
-        },
-        {
-          nombre: "Bello",
-          latitude: 6.330673,
-          longitude: -75.553296
-        },
-        {
-          nombre: "Madera",
-          latitude: 6.315869,
-          longitude: -75.555376
-        },
-        {
-          nombre: "Acevedo",
-          latitude: 6.300145,
-          longitude: -75.558536
-        },
-        {
-          nombre: "Tricentenario",
-          latitude: 6.290361,
-          longitude: -75.564716
-        },
-        {
-          nombre: "Caribe",
-          latitude: 6.278235,
-          longitude: -75.569479
-        },
-        {
-          nombre: "Universidad",
-          latitude: 6.269350,
-          longitude: -75.565791
-        },
-        {
-          nombre: "Hospital",
-          latitude: 6.263982,
-          longitude: -75.563527
-        },
-        {
-          nombre: "Prado",
-          latitude: 6.256863,
-          longitude: -75.566250
-        },
-        {
-          nombre: "Parque Berrio",
-          latitude: 6.250174,
-          longitude: -75.568289
-        },
-        {
-          nombre: "San Antonio",
-          latitude: 6.247133,
-          longitude: -75.569827
-        },
-        {
-          nombre: "Alpujarra",
-          latitude: 6.242967,
-          longitude: -75.571496
-        },
-        {
-          nombre: "Exposiciones",
-          latitude: 6.238397,
-          longitude: -75.573235
-        },
-        {
-          nombre: "Industriales",
-          latitude: 6.230622,
-          longitude: -75.575552
-        },
-        {
-          nombre: "Poblado",
-          latitude: 6.212746,
-          longitude: -75.578084
-        },
-        {
-          nombre: "Aguacatala",
-          latitude: 6.193846,
-          longitude: -75.581946
-        },
-        {
-          nombre: "Ayurá",
-          latitude: 6.186102,
-          longitude: -75.586216
-        },
-        {
-          nombre: "Envigado",
-          latitude: 6.174646,
-          longitude: -75.597095
-        },
-        {
-          nombre: "Itaguí",
-          latitude: 6.163212,
-          longitude: -75.605915
-        },
-        {
-          nombre: "Sabaneta",
-          latitude: 6.157366,
-          longitude: -75.616708
-        },
-        {
-          nombre: "La estrella",
-          latitude: 6.152694,
-          longitude: -75.626493
-        },
-        {
-          nombre: "Udem",
-          latitude: 6.230835, 
-          longitude: -75.609283
-        },
-        {
-          nombre: "Los Alpes",
-          latitude: 6.231070,
-          longitude:  -75.605121
-        },
-        {
-          nombre: "La Palma",
-          latitude: 6.152694,
-          longitude: -75.626493
-        },
-        {
-          nombre: "Belen",
-          latitude: 6.231390,
-          longitude:  -75.596752
-        },
-        {
-          nombre: "Rosales",
-          latitude:6.231566,
-          longitude:  -75.590943
-        },
-        {
-          nombre: "Fatima",
-          latitude: 6.231656, 
-          longitude:  -75.586587
-        },
-        {
-          nombre: "Nutibara",
-          latitude: 6.231832, 
-          longitude: -75.582091
-        },
-        {
-          nombre: "Industriales MP",
-          latitude: 6.230462,  
-          longitude: -75.576732
-        },
-        {
-          nombre: "Aranjuez",
-          latitude: 6.285844,  
-          longitude: -75.555832
-        },
-        {
-          nombre: "Berlin",
-          latitude: 6.282986,  
-          longitude: -75.552957
-        },
-        {
-          nombre: "Las Esmeraldas",
-          latitude: 6.278305,  
-          longitude: -75.553263
-        },
-        {
-          nombre: "Manrique",
-          latitude: 6.273228,  
-          longitude: -75.554078
-        },
-        {
-          nombre: "Gardel",
-          latitude:6.267709,  
-          longitude: -75.555060
-        },
-        {
-          nombre: "Palos verdes",
-          latitude:6.262073,  
-          longitude: -75.555886
-        },
-        {
-          nombre: "Hospital B",
-          latitude:6.263907,  
-          longitude: -75.563155
-        },
-        {
-          nombre: "UdeA",
-          latitude:6.263875,  
-          longitude: -75.567682
-        },
-        {
-          nombre: "Chagualo",
-          latitude:6.260799,  
-          longitude:-75.569160
-        },
-        {
-          nombre: "Minorista",
-          latitude:6.256037,  
-          longitude: -75.573197
-        },
-        {
-          nombre: "Cisneros",
-          latitude:6.250544,  
-          longitude: -75.575134
-        },
-        {
-          nombre: "Plaza Mayor",
-          latitude:6.243647,  
-          longitude:-75.575354
-        }
-
-]
-
 metro=[
         {
           identificacion: "001 VERDE",
@@ -288,12 +83,14 @@ metro=[
   for (var i=0; i< this.trenes.length;i++){
           var placer = {lat: this.trenes[i].ubicacion.x, lng: this.trenes[i].ubicacion.y};
           var marker1 = this.trenes[i];
+          console.log(marker1[i]);
           var marker = new google.maps.Marker({ 
           position: placer,
           map: map,
           label: this.trenes[i].id,
           icon: "../assets/train.png"
           });
+        
 
            var contentString =
             '<b>'+marker1.id+'</b>' +
@@ -408,7 +205,35 @@ metro=[
   }
   abrirLista(){
     console.log(this.metro);
+    console.log(this.obtenerLlegada("Las Esmeraldas",1));
     this.navCtrl.push(ListPage, {metro: this.trenes});
+
   }
+
+  
+  obtenerProxTren(xOrig,yOrig, xDestino, yDestino){
+    console.log(xOrig +" DIFF  "+ yOrig)
+    var x1=new google.maps.LatLng(xOrig,yOrig);
+    var x2=new google.maps.LatLng(xDestino,yDestino);
+    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+    return distancia;
+  }
+  public obtenerLlegada(idEstacion, idTren){
+    var estacion = this.trenesProvider.obtenerEstacionesById(idEstacion);
+    var tren = this.trenesProvider.obtenerTrenesById(idTren);
+    var distancia = 0;
+    distancia = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren.ubicacion.x, tren.ubicacion.y);
+    console.log("Distancia : "+distancia);
+    console.log(estacion);
+    console.log(tren);
+    var tiempo =0;
+    tiempo= (this.trenesProvider.trayecto[0].tiempos[6] - this.trenesProvider.trayecto[0].tiempos[0])/100;
+    console.log("Tiempo: "+ tiempo +"min");
+    
+    var velocidad = distancia / tiempo;
+    return "Velocidad promedio"+velocidad+", Distancia: "+distancia+", Tiempo:" +tiempo+" mins.";
+  }
+
 }
+
 
