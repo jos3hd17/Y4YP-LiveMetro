@@ -165,6 +165,16 @@ export class HomePage {
           longitude: -75.576732
         },
       ]
+
+      metro=[
+        {
+          identificacion: "001 VERDE",
+          latitude:6.334577,
+          longitude:-75.548287
+        }
+      ]
+
+
 googleMap(){
     
   var str = this.ubi; 
@@ -190,9 +200,28 @@ googleMap(){
           position: places,
           map: map,
           label: this.estaciones[i].nombre,
-          icon: "../assets/station.png"
+          icon: "../assets/house.png"
         });
         }
+
+        for (var i=0; i< this.metro.length;i++){
+          var placer = {lat: this.metro[i].latitude, lng: this.metro[i].longitude};
+          var marker1 = this.metro[i];
+          var marker = new google.maps.Marker({ 
+          position: placer,
+          map: map,
+          label: this.metro[i].identificacion,
+          icon: "../assets/train.png"
+        });
+          (function(marker,marker1){
+          google.maps.event.addListener(marker,"click", function(e){
+              alert('Hola, granhijueputa');
+          });
+
+          })(marker,marker1);
+
+        }
+      
    var stations = [];
       stations.push(new google.maps.LatLng(6.337804,-75.544299)); //Niquia
       stations.push(new google.maps.LatLng(6.330673, -75.553296));  //Bello
