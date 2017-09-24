@@ -8,8 +8,12 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+declare var google;
+declare var map;
 @Injectable()
 export class TrenesProvider {
+
 
   trenes =  [{
     "id": "1",
@@ -200,9 +204,9 @@ export class TrenesProvider {
   constructor(public http: Http) {
     
   }
-/*
+
   obtenerProxTren(x, y){
-    var trenesCercanos = {};
+    /*var trenesCercanos = {};
     
     for (var i = 0; i < this.trenes.length; i++) {
       
@@ -212,8 +216,12 @@ export class TrenesProvider {
       }
       var element = array[i];
       
-    }
-  }*/
+    }*/
+
+    var x1=new google.maps.LatLng(50.995093,-16.417091);
+    var x2=new google.maps.LatLng(50.997698,-16.41788);
+    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+  }
 
 
   degToRad(n)
