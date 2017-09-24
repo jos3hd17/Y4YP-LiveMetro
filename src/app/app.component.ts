@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CivicaPage } from '../pages/civica/civica'
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ProximosTrenesPage } from '../pages/proximos-trenes/proximos-trenes';
 
 @Component({
   templateUrl: 'app.html'

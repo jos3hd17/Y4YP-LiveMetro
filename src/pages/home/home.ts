@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { ProximosTrenesPage } from '../proximos-trenes/proximos-trenes';
 declare var google;
 declare var map;
 @Component({
@@ -186,5 +187,27 @@ googleMap(){
       var polyLine = new google.maps.Polyline(polyLineOptions);
       polyLine.setMap(map);
             
+      
+      
+  }
+
+  ir(){
+    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
+    var x2=new google.maps.LatLng(6.230622,-75.575552);//industriales
+    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+    console.log("distancia entre exposiciones e industriales"+ distancia);
+
+    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
+    var x2=new google.maps.LatLng(6.212746,-75.578084);//poblado
+    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+    console.log("distancia entre exposiciones y poblado"+ distancia);
+
+    
+    
+    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
+    var x2=new google.maps.LatLng(6.222377, -75.576823);//poblado
+    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+    console.log("distancia entre exposiciones y proximo tren "+ distancia);
+
   }
 }

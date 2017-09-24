@@ -9,6 +9,7 @@ import { CivicaPage } from '../pages/civica/civica';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProximosTrenesPage } from '../pages/proximos-trenes/proximos-trenes';
 import { TrenesProvider } from '../providers/trenes/trenes';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TrenesProvider } from '../providers/trenes/trenes';
     MyApp,
     HomePage,
     ListPage,
-    CivicaPage
+    CivicaPage,
+    ProximosTrenesPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { TrenesProvider } from '../providers/trenes/trenes';
     MyApp,
     HomePage,
     ListPage,
-    CivicaPage
+    CivicaPage,
+    ProximosTrenesPage
   ],
   providers: [
     StatusBar,
