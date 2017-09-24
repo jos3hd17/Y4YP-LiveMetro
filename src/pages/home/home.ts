@@ -90,9 +90,9 @@ metro=[
           label: this.trenes[i].id,
           icon: "../assets/train.png"
           });
-        
-
-           var contentString =
+          (function(marker,marker1){
+          google.maps.event.addListener(marker,"click", function(e){
+            var contentString =
             '<b>'+marker1.id+'</b>' +
             '<p>Tren de '+6+' vagones, sus capacidades de 0 a 100% son:</p>'+
             '<p> 1) '+marker1.vagones.v1.porcent+'%</p>'+
@@ -101,13 +101,9 @@ metro=[
             '<p> 4) '+marker1.vagones.v4.porcent+'%</p>'+
             '<p> 5) '+marker1.vagones.v5.porcent+'%</p>'+
             '<p> 6) '+marker1.vagones.v6.porcent+'%</p>';
-
-        var infowindow = new google.maps.InfoWindow({
+            var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-          
-          (function(marker,marker1){
-          google.maps.event.addListener(marker,"click", function(e){
             infowindow.open(map,marker);
 
        });
@@ -205,7 +201,7 @@ metro=[
   }
   abrirLista(){
     console.log(this.metro);
-    console.log(this.obtenerLlegada("Las Esmeraldas",1));
+    console.log(this.obtenerLlegada("Las Esmeraldas",1,4));
     this.navCtrl.push(ListPage, {metro: this.trenes});
 
   }
@@ -218,22 +214,28 @@ metro=[
     var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
     return distancia;
   }
-  public obtenerLlegada(idEstacion, idTren){
+  public obtenerLlegada(idEstacion, idTren, idTren2){
     var estacion = this.trenesProvider.obtenerEstacionesById(idEstacion);
     var tren = this.trenesProvider.obtenerTrenesById(idTren);
-    var distancia = 0;
-    distancia = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren.ubicacion.x, tren.ubicacion.y);
-    console.log("Distancia : "+distancia);
+    var tren2 = this.trenesProvider.obtenerTrenesById(idTren2);
+    
+    var distancia1 = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren.ubicacion.x, tren.ubicacion.y);
+    var distancia2 = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren2.ubicacion.x, tren2.ubicacion.y);
+  console.log("Distancia1 : "+distancia1);
     console.log(estacion);
     console.log(tren);
-    var tiempo =0;
-    tiempo= (this.trenesProvider.trayecto[0].tiempos[6] - this.trenesProvider.trayecto[0].tiempos[0])/100;
-    console.log("Tiempo: "+ tiempo +"min");
+    var tiempo1= (this.trenesProvider.trayecto[0].tiempos[6] - this.trenesProvider.trayecto[0].tiempos[0])/100;
+    console.log("Tiempo: "+ tiempo1 +"min");
+    var tiempo2= (this.trenesProvider.trayecto[1].tiempos[6] - this.trenesProvider.trayecto[1].tiempos[0])/100;
     
-    var velocidad = distancia / tiempo;
-    return "Velocidad promedio"+velocidad+", Distancia: "+distancia+", Tiempo:" +tiempo+" mins.";
+    var velocidad1 = distancia1 / tiempo1;
+    var velocidad2 = distancia2 / tiempo2;
+    
+    return "Velocidad promedio"+velocidad1+", Distancia: "+distancia1+", Tiempo:" +tiempo1+" mins." +"\n+"
+        +"Velocidad promedio"+velocidad2+", Distancia: "+distancia2+", Tiempo:" +tiempo2+" mins." +"\n+";
   }
 
 }
+
 
 

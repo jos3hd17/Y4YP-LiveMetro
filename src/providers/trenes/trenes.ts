@@ -20,8 +20,8 @@ export class TrenesProvider {
       linea: "A",
       direccion: 3,
       ubicacion: {
-        x: 6.278986,
-        y: -75.553019
+        x: 6.281982,
+        y: -75.552858
       },
       color: "verde",
       vagones: {
@@ -254,8 +254,8 @@ export class TrenesProvider {
       linea: "A",
       direccion: 3,
       ubicacion: {
-        x: 6.282542,
-        y: -75.552933
+        x: 6.285841,
+        y: -75.556653
       },
       color: "verde",
       vagones: {
@@ -548,6 +548,20 @@ trayecto = [
 		51014,
 		51133,
     51251
+  
+]
+  },
+{
+	id:4,
+	tiempos : [
+    
+	  51046,
+	  50903,
+		50912,
+		50920,
+		51014,
+		51133,
+    52351
   
 ]
   }
