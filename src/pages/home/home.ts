@@ -24,7 +24,6 @@ export class HomePage {
     this.ubi = "6.244203, -75.581212";
     this.trenes = trenesProvider.obtenerTrenes();
     this.estaciones =trenesProvider.obtenerEstaciones();
-    console.log(this.info);
   }
  
 metro=[
@@ -83,7 +82,6 @@ metro=[
   for (var i=0; i< this.trenes.length;i++){
           var placer = {lat: this.trenes[i].ubicacion.x, lng: this.trenes[i].ubicacion.y};
           var marker1 = this.trenes[i];
-          console.log(marker1[i]);
           var marker = new google.maps.Marker({ 
           position: placer,
           map: map,
@@ -180,35 +178,28 @@ metro=[
   }
 
    ir(){
-    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
-    var x2=new google.maps.LatLng(6.230622,-75.575552);//industriales
-    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
-    console.log("distancia entre exposiciones e industriales"+ distancia);
-
-    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
-    var x2=new google.maps.LatLng(6.212746,-75.578084);//poblado
-    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
-    console.log("distancia entre exposiciones y poblado"+ distancia);
-
-    
-    
-    var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
-    var x2=new google.maps.LatLng(6.222377, -75.576823);//poblado
-    var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
-    console.log("distancia entre exposiciones y proximo tren "+ distancia);
-    console.log(this.trenes);
     this.navCtrl.push(TrenPage);
   }
   abrirLista(){
-    console.log(this.metro);
-    console.log(this.obtenerLlegada("Las Esmeraldas",1,4));
-    this.navCtrl.push(ListPage, {metro: this.trenes});
+    //console.log(this.obtenerLlegada("Las Esmeraldas",1,4));
+    this.showAlert(this.obtenerLlegada("Las Esmeraldas",1,4))
+    this.navCtrl.push(ListPage, {metro: this.trenes });
 
+  }
+
+  showAlert(trenes) {
+    let alert = this.alertCtrl.create({
+      title: 'Trenes cerca',
+      subTitle: 'Trén 1: '+ "Tiempo de mora"+ trenes.Tiempo+", Velocidad_promedio: " +trenes.Velocidad_promedio +" km/h "+ "Distancia: "+ trenes.Distancia +"\n*",
+      message:  'Trén 4: '+ "Tiempo de mora"+ trenes.Tiempo2+", Velocidad_promedio2: " +trenes.Velocidad_promedio2 +" km/h "+ "Distancia1: "+ trenes.Distancia2,
+     
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   
   obtenerProxTren(xOrig,yOrig, xDestino, yDestino){
-    console.log(xOrig +" DIFF  "+ yOrig)
     var x1=new google.maps.LatLng(xOrig,yOrig);
     var x2=new google.maps.LatLng(xDestino,yDestino);
     var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
@@ -218,21 +209,20 @@ metro=[
     var estacion = this.trenesProvider.obtenerEstacionesById(idEstacion);
     var tren = this.trenesProvider.obtenerTrenesById(idTren);
     var tren2 = this.trenesProvider.obtenerTrenesById(idTren2);
-    
+     
     var distancia1 = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren.ubicacion.x, tren.ubicacion.y);
     var distancia2 = this.obtenerProxTren(estacion.latitude, estacion.longitude, tren2.ubicacion.x, tren2.ubicacion.y);
-  console.log("Distancia1 : "+distancia1);
-    console.log(estacion);
-    console.log(tren);
+
     var tiempo1= (this.trenesProvider.trayecto[0].tiempos[6] - this.trenesProvider.trayecto[0].tiempos[0])/100;
-    console.log("Tiempo: "+ tiempo1 +"min");
+   
     var tiempo2= (this.trenesProvider.trayecto[1].tiempos[6] - this.trenesProvider.trayecto[1].tiempos[0])/100;
     
     var velocidad1 = distancia1 / tiempo1;
     var velocidad2 = distancia2 / tiempo2;
     
-    return "Velocidad promedio"+velocidad1+", Distancia: "+distancia1+", Tiempo:" +tiempo1+" mins." +"\n+"
-        +"Velocidad promedio"+velocidad2+", Distancia: "+distancia2+", Tiempo:" +tiempo2+" mins." +"\n+";
+    var res = { Velocidad_promedio: velocidad1, Distancia: distancia1, Tiempo: tiempo1,
+    Velocidad_promedio2: velocidad2, Distancia2: distancia2, Tiempo2: tiempo2}
+    return res;
   }
 
 }

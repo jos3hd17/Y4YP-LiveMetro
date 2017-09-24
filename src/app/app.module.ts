@@ -13,6 +13,7 @@ import { ProximosTrenesPage } from '../pages/proximos-trenes/proximos-trenes';
 import { TrenesProvider } from '../providers/trenes/trenes';
 import { TrenPage } from '../pages/tren/tren';
 import {HttpModule} from '@angular/http'
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {HttpModule} from '@angular/http'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TrenesProvider
+    TrenesProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}

@@ -9,13 +9,14 @@ import{TrenPage} from '../tren/tren'
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{title: string, note: string, icon: string, color: string}>;
 
   trenes:any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = this.navParams.get('item');
     this.trenes = this.navParams.get('metro');
+    console.log(this.trenes);
 
     console.log(this.trenes);
     this.items = [];
@@ -23,7 +24,8 @@ export class ListPage {
       this.items.push({
         title: this.trenes[i].id,
         note: 'tiene: '+6+' vagones',
-        icon: "bus"
+        icon: "bus",
+        color: this.trenes[i].color
       });
     }
   }

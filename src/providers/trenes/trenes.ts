@@ -23,7 +23,7 @@ export class TrenesProvider {
         x: 6.281982,
         y: -75.552858
       },
-      color: "verde",
+      color: "rojo",
       vagones: {
         v1: {
           porcent:this.porcentVagon(200,190),

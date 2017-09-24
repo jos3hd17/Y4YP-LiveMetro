@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+
 
 /**
  * Generated class for the CivicaPage page.
@@ -15,11 +17,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CivicaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public usuarioProvider:UsuarioProvider) {
+    this.usuario = this.usuarioProvider.usuario;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CivicaPage');
-  }
+
+ 
 
 }
