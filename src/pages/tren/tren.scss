@@ -4,20 +4,22 @@ page-tren {
           ion-card {
             position: relative;
             text-align: center;
-            height: 15ex;
+            height: 25ex;
+            color: #000000;
+
           }
         
           .card-title1 {
-            position: absolute;
-            top: 10%;
+            position: relative;
+            
             font-size: 2.0em;
             width: 100%;
             font-weight: bold;
             color: #000000;
           }
           .card-title {
-            position: absolute;
-            top: 36%;
+            position: relative;
+
             font-size: 1.5em;
             width: 100%;
             font-weight: bold;
@@ -28,8 +30,8 @@ page-tren {
         
           .card-subtitle {
             font-size: 1.0em;
-            position: absolute;
-            top: 60%;
+            position: relative;
+
             width: 100%;
             color: #000000;
 
@@ -38,8 +40,8 @@ page-tren {
 
         .card-subtitle1 {
             font-size: 1.0em;
-            position: absolute;
-            top: 75%;
+            position: relative;
+
             width: 100%;
             color: #000000;
 

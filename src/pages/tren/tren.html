@@ -16,13 +16,17 @@
 <ion-content padding>
     
     <ion-card color="{{tren.vagones.v1.color}}" >
-              <div class="card-title1">
-              Vagón 1
-              </div>
+        <div class="card-title1">
+        Vagón 1
+        </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v1.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v1.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v1.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v1.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v1.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v1.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 
@@ -31,9 +35,13 @@
         Vagón 2
         </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v2.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v2.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v2.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v2.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v2.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v2.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 
@@ -42,9 +50,13 @@
         Vagón 3
         </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v3.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v3.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v3.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v3.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v3.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v3.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 
@@ -53,9 +65,13 @@
         Vagón 4
         </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v4.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v4.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v4.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v4.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v4.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v4.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 
@@ -64,21 +80,28 @@
         Vagón 5
         </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v5.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v5.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v5.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v5.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v5.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v5.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 
-
     <ion-card color="{{tren.vagones.v6.color}}" >
         <div class="card-title1">
-        Vagón 5
+        Vagón 6
         </div>
         <div class="card-subtitle"> capacidad max: {{tren.vagones.v6.capacidad_max}}</div>
-        <div  class="card-title">población actual: {{tren.vagones.v6.capacidad_actual}}</div>
+        <div  class="card-title">población actual: {{tren.vagones.v6.porcent}} %</div>
         <div  class="card-subtitle1">
-            <ion-icon name="logo-octocat"></ion-icon>
+            <ion-icon name="{{tren.vagones.v6.emoji}}"></ion-icon>
+            <h2>Asientos preferenciales </h2>
+            <h3>(0 = ocupado, 1 = disponible)</h3>
+            <h3>Puesto 1: {{tren.vagones.v6.zonas_especiales.z1}}</h3>
+            <h3>Puesto 2: {{tren.vagones.v6.zonas_especiales.z2}}</h3>
         </div>
     </ion-card>
 </ion-content>
