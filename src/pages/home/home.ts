@@ -124,6 +124,46 @@ export class HomePage {
           latitude: 6.152694,
           longitude: -75.626493
         },
+        {
+          nombre: "Udem",
+          latitude: 6.230835, 
+          longitude: -75.609283
+        },
+        {
+          nombre: "Los Alpes",
+          latitude: 6.231070,
+          longitude:  -75.605121
+        },
+        {
+          nombre: "La Palma",
+          latitude: 6.152694,
+          longitude: -75.626493
+        },
+        {
+          nombre: "Belen",
+          latitude: 6.231390,
+          longitude:  -75.596752
+        },
+        {
+          nombre: "Rosales",
+          latitude:6.231566,
+          longitude:  -75.590943
+        },
+        {
+          nombre: "Fatima",
+          latitude: 6.231656, 
+          longitude:  -75.586587
+        },
+        {
+          nombre: "Nutibara",
+          latitude: 6.231832, 
+          longitude: -75.582091
+        },
+        {
+          nombre: "Industriales MP",
+          latitude: 6.230462,  
+          longitude: -75.576732
+        },
       ]
 googleMap(){
     
@@ -135,6 +175,8 @@ googleMap(){
   console.log(splitted)
 
 
+
+
      var place ={lat: latitude, lng: longitude};
      var mapDiv = document.getElementById('map');
         var map = new google.maps.Map(mapDiv, {
@@ -144,11 +186,11 @@ googleMap(){
      
         for (var i=0; i< this.estaciones.length;i++){
           var places = {lat: this.estaciones[i].latitude, lng: this.estaciones[i].longitude};
-          var marker = new google.maps.Marker({
+          var marker = new google.maps.Marker({ 
           position: places,
           map: map,
           label: this.estaciones[i].nombre,
-          icon: "home"
+          icon: "../assets/station.png"
         });
         }
    var stations = [];
@@ -180,11 +222,26 @@ googleMap(){
       stations.push(new google.maps.LatLng(6.152694,-75.626493)); //La estrella
       
       
+      
 
-
-      var polyLineOptions ={path : stations, strokeColor: "#45EF1B",strokeOpacity: 0.6, strokeWeight:4};
+      var polyLineOptions ={path : stations, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
       var polyLine = new google.maps.Polyline(polyLineOptions);
       polyLine.setMap(map);
+
+      var metroplus = [];
+      metroplus.push(new google.maps.LatLng(6.230835, -75.609283));//Udem
+      metroplus.push(new google.maps.LatLng(6.231070, -75.605121));//Los alpes
+      metroplus.push(new google.maps.LatLng(6.231139, -75.601028));//La palma
+      metroplus.push(new google.maps.LatLng(6.231390, -75.596752));//Belen
+      metroplus.push(new google.maps.LatLng(6.231566, -75.590943));//Rosales
+      metroplus.push(new google.maps.LatLng(6.231656, -75.586587));//Fatima
+      metroplus.push(new google.maps.LatLng(6.231832, -75.582091));//Nutibara
+      metroplus.push(new google.maps.LatLng(6.230462, -75.576732));//Industriales 2
             
+        var polyLineOptions2 ={path : metroplus, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
+      var polyLine2 = new google.maps.Polyline(polyLineOptions2);
+      polyLine2.setMap(map);
+
+
   }
 }
