@@ -597,8 +597,8 @@ establecimientos = [
     nombre:"Coffee Esther",
     descripcion: "Tómate un cafe en nuestro sitio ubicado al frente de la estación san antonio",
     icono: "https://www.charlesesten.com/assets/ab1a23a3/images/favicon_32.png",
-    latitud:6.246925,
-    longitud:-75.569820
+    latitud:6.278234,
+    longitud:-75.553037
   }, 
    {
     id: 603,
