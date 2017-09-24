@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProximosTrenesPage } from '../pages/proximos-trenes/proximos-trenes';
 import { TrenesProvider } from '../providers/trenes/trenes';
 import { TrenPage } from '../pages/tren/tren';
+import {HttpModule} from '@angular/http'
 
 
 @NgModule({
@@ -22,10 +23,12 @@ import { TrenPage } from '../pages/tren/tren';
     CivicaPage,
     ProximosTrenesPage,
     TrenPage
+    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

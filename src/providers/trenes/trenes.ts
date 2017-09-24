@@ -18,10 +18,10 @@ export class TrenesProvider {
      {
       id: "1",
       linea: "A",
-      direccion: 1,
+      direccion: 3,
       ubicacion: {
-        x: 10,
-        y: 10
+        x: 6.334577,
+        y: -75.548287
       },
       color: "verde",
       vagones: {
@@ -96,7 +96,7 @@ export class TrenesProvider {
     {
       id: "2",
       linea: "A",
-      direccion: 1,
+      direccion: 2,
       ubicacion: {
         x: 6.274063,
         y: -75.570607
@@ -104,33 +104,33 @@ export class TrenesProvider {
       color: "verde",
       vagones: {
         v1: {
-          porcent:this.porcentVagon(200,190),
-          color: this.colorVagon(200,190),
-          emoji: this.emojiVagon(200,190),
+          porcent:this.porcentVagon(200,130),
+          color: this.colorVagon(200,130),
+          emoji: this.emojiVagon(200,130),
           capacidad_max: 200,
-          capacidad_actual: 190,
+          capacidad_actual: 130,
           zonas_especiales: {
             z1: 1,
             z2: 0
           }
         },
         v2: {
-          porcent:this.porcentVagon(200,180),          
-          color: this.colorVagon(200,180),
-          emoji: this.emojiVagon(200,180),
+          porcent:this.porcentVagon(200,100),          
+          color: this.colorVagon(200,100),
+          emoji: this.emojiVagon(200,100),
           capacidad_max: 200,
-          capacidad_actual: 180,
+          capacidad_actual: 100,
           zonas_especiales: {
             z1: 1,
             z2: 1
           }
         },
         v3: {
-          porcent:this.porcentVagon(200,120),          
-          color: this.colorVagon(200,120),
-          emoji: this.emojiVagon(200,120),
+          porcent:this.porcentVagon(200,95),          
+          color: this.colorVagon(200,95),
+          emoji: this.emojiVagon(200,95),
           capacidad_max: 200,
-          capacidad_actual: 125,
+          capacidad_actual: 95,
           zonas_especiales: {
             z1: 1,
             z2: 1
@@ -174,6 +174,18 @@ export class TrenesProvider {
   ]
   constructor(public http: Http) {
     
+  }
+
+  public obtenerTrenes(){
+    return this.trenes;
+  }
+  public obtenerTrenesById(id){
+    for (let i=0; this.trenes.length;i++){
+      if (id == this.trenes[i].id){
+        return this.trenes[i];
+      } 
+    }
+    return {};
   }
 
   obtenerProxTren(x, y){

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import{TrenPage} from '../tren/tren'
 
 @Component({
   selector: 'page-list',
@@ -10,28 +11,26 @@ export class ListPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
+  trenes:any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    this.selectedItem = this.navParams.get('item');
+    this.trenes = this.navParams.get('metro');
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
+    console.log(this.trenes);
     this.items = [];
-    for (let i = 1; i < 11; i++) {
+    for (let i = 0; i < this.trenes.length ; i++) {
       this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        title: this.trenes[i].id,
+        note: 'tiene: '+6+' vagones',
+        icon: "bus"
       });
     }
   }
-
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+  irDescription(name){
+    
+    this.navCtrl.push(TrenPage, {id:name});
   }
+
+  
 }

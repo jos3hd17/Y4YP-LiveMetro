@@ -3,14 +3,22 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>MetroLive</ion-title>
-    <button ion-button (click)="ir()">ir </button>
+    <ion-row>
+      <ion-col>
+          <ion-title style="margin-top:10px">MetroLive</ion-title>
+      </ion-col>
+      <ion-col>
+         <button ion-button (click)="abrirLista()">Ver lista</button>
+    </ion-col>
+    </ion-row>
   </ion-navbar>
   
 </ion-header>
 
 <ion-content>
-  <div id="map"></div>
+  <div id="map">
+  </div>
+  
 
  
 </ion-content>

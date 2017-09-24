@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ProximosTrenesPage } from '../proximos-trenes/proximos-trenes';
 import { TrenPage } from '../tren/tren';
+import {ListPage} from '../list/list';
+import { TrenesProvider } from '../../providers/trenes/trenes';
 declare var google;
 declare var map;
 @Component({
@@ -11,15 +13,17 @@ declare var map;
 export class HomePage {
 
   ubi: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController, public alertCtrl: AlertController ) {
+  trenes:any;
+  constructor(public trenesProvider: TrenesProvider,public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController, public alertCtrl: AlertController ) {
     let that = this;
     setTimeout(function(){
       that.googleMap();
     }, 2000)
     this.ubi = "6.244203, -75.581212";
-
+    this.trenes = trenesProvider.obtenerTrenes();
   }
-  estaciones =[
+ 
+estaciones =[
         {
           nombre: "Niquia",
           latitude: 6.337804,
@@ -165,15 +169,35 @@ export class HomePage {
           latitude: 6.230462,  
           longitude: -75.576732
         },
-      ]
+]
 
-      metro=[
+metro=[
         {
           identificacion: "001 VERDE",
           latitude:6.334577,
-          longitude:-75.548287
+          longitude:-75.548287,
+          vagones:6,
+          v1:70,
+          v2:68,
+          v3:60,
+          v4:75,
+          v5:50,
+          v6:39
+        },
+        {
+          identificacion: "002 NARANJA",
+          latitude:6.289346,
+          longitude:-75.565116,
+          vagones:6,
+          v1:30,
+          v2:48,
+          v3:20,
+          v4:32,
+          v5:10,
+          v6:9
         }
-      ]
+]
+
 
 
   googleMap(){
@@ -185,7 +209,11 @@ export class HomePage {
   var mapDiv = document.getElementById('map');
   var map = new google.maps.Map(mapDiv, {
           zoom: 12,
-          center: place
+          center: place,
+          fullscreenControl:false,
+          streetViewControl:false,
+          zoomControl:false,
+          mapTypeControl:false
         });
   for (var i=0; i< this.estaciones.length;i++){
           var places = {lat: this.estaciones[i].latitude, lng: this.estaciones[i].longitude};
@@ -196,23 +224,38 @@ export class HomePage {
           icon: "../assets/house.png"
         });
   }
-  for (var i=0; i< this.metro.length;i++){
-          var placer = {lat: this.metro[i].latitude, lng: this.metro[i].longitude};
-          var marker1 = this.metro[i];
+  for (var i=0; i< this.trenes.length;i++){
+          var placer = {lat: this.trenes[i].ubicacion.x, lng: this.trenes[i].ubicacion.y};
+          var marker1 = this.trenes[i];
           var marker = new google.maps.Marker({ 
           position: placer,
           map: map,
-          label: this.metro[i].identificacion,
+          label: this.trenes[i].id,
           icon: "../assets/train.png"
           });
+
+           var contentString =
+            '<b>'+marker1.id+'</b>' +
+            '<p>Tren de '+6+' vagones, sus capacidades de 0 a 100% son:</p>'+
+            '<p> 1) '+marker1.vagones.v1.porcent+'%</p>'+
+            '<p> 2) '+marker1.vagones.v2.porcent+'%</p>'+
+            '<p> 3) '+marker1.vagones.v3.porcent+'%</p>'+
+            '<p> 4) '+marker1.vagones.v4.porcent+'%</p>'+
+            '<p> 5) '+marker1.vagones.v5.porcent+'%</p>'+
+            '<p> 6) '+marker1.vagones.v6.porcent+'%</p>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+          
           (function(marker,marker1){
           google.maps.event.addListener(marker,"click", function(e){
-            console.log("que dicen los hijueputas");
-            
-          });
+            infowindow.open(map,marker);
 
-          })(marker,marker1);
+       });
+    })(marker,marker1);
   }
+  
    var stations = [];
       stations.push(new google.maps.LatLng(6.337804,-75.544299)); //Niquia
       stations.push(new google.maps.LatLng(6.330673, -75.553296));  //Bello
@@ -259,7 +302,7 @@ export class HomePage {
       
   }
 
-  ir(){
+   ir(){
     var x1=new google.maps.LatLng(6.242967,-75.571496);//exposiciones
     var x2=new google.maps.LatLng(6.230622,-75.575552);//industriales
     var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
@@ -276,8 +319,12 @@ export class HomePage {
     var x2=new google.maps.LatLng(6.222377, -75.576823);//poblado
     var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
     console.log("distancia entre exposiciones y proximo tren "+ distancia);
-      
+    console.log(this.trenes);
     this.navCtrl.push(TrenPage);
-
+  }
+  abrirLista(){
+    console.log(this.metro);
+    this.navCtrl.push(ListPage, {metro: this.trenes});
   }
 }
+

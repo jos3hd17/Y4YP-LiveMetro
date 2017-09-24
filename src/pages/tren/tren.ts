@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {TrenesProvider} from '../../providers/trenes/trenes';
 /**
  * Generated class for the TrenPage page.
  *
@@ -15,8 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TrenPage {
  tren: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-     this.tren=  {
+  constructor(public TrenesProvider:TrenesProvider,public navCtrl: NavController, public navParams: NavParams) {
+    this.tren = TrenesProvider.obtenerTrenesById(this.navParams.get('id'));
+    console.log(this.tren);
+    /*
+    this.tren=  {
       id: "2",
       linea: "A",
       direccion: 1,
@@ -94,6 +97,7 @@ export class TrenPage {
         }
       }
     }
+    */
   }
 
   colorVagon(capacidad_max, capacidad_actual){
