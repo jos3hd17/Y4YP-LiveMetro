@@ -549,9 +549,9 @@ trayecto = [
 		51133,
     51251
   
-]
+  ]
   },
-{
+  {
 	id:4,
 	tiempos : [
     
@@ -563,7 +563,50 @@ trayecto = [
 		51133,
     52351
   
+  ]
+  }
 ]
+
+establecimientos = [
+  {
+    id: 600,
+    nombre:"Ruta N",
+    descripcion: "¿Tienes una idea espectacular para mejorar la movilidad? A partir de una serie de datos podrás desarrollarla, te invitamos a participar en la primera competencia de datos MEData",
+    icono: "http://www.rutanmedellin.org/images/logomin.svg",
+    latitud:6.264526,
+    longitud:-75.566550
+  },
+  {
+    id: 601,
+    nombre:"Alcaldia de Medellin",
+    descripcion: "Contamos con VOS, para construir la marca de nuestra ciudad #SoyMarcaMedellin",
+    icono: "http://arrobamedellin.edu.co/templates/arrobamedellin_web_2017/favicon.ico",
+    latitud:6.244735,
+    longitud:-75.573760
+  },
+  {
+    id: 602,
+    nombre:"Cinema procinal Niquia",
+    descripcion: "La cadena de cinemas mas popular en todo el valle de aburra",
+    icono: "http://www.procinal.com.co/sites/default/files/procinal_2012.ico",
+    latitud:6.338758,
+    longitud:-75.544331
+  },
+  {
+    id: 603,
+    nombre:"Coffee Esther",
+    descripcion: "Tómate un cafe en nuestro sitio ubicado al frente de la estación san antonio",
+    icono: "https://www.charlesesten.com/assets/ab1a23a3/images/favicon_32.png",
+    latitud:6.246925,
+    longitud:-75.569820
+  }, 
+   {
+    id: 603,
+    nombre:"Punto caliente",
+    descripcion: "Visitanos en hora pico y obtendrás maravillosos descuentos si utilizas la aplicación",
+    icono: "http://icons.veryicon.com/32/Folder/Pry%20Aluminium/Coffee.png",
+    latitud:6.213357,
+    longitud:-75.575485
   }
 ]
   

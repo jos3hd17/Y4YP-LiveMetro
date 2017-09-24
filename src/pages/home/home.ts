@@ -16,6 +16,7 @@ export class HomePage {
   trenes:any;
   estaciones:any;
   info:any;
+  establecimiento:any;
   constructor(public trenesProvider: TrenesProvider,public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController, public alertCtrl: AlertController ) {
     let that = this;
     setTimeout(function(){
@@ -24,6 +25,7 @@ export class HomePage {
     this.ubi = "6.244203, -75.581212";
     this.trenes = trenesProvider.obtenerTrenes();
     this.estaciones =trenesProvider.obtenerEstaciones();
+    this.establecimiento=trenesProvider.establecimientos;
   }
  
 metro=[
@@ -107,7 +109,31 @@ metro=[
        });
     })(marker,marker1);
   }
+  for (var i=0; i< this.establecimiento.length;i++){
+          var placer = {lat: this.establecimiento[i].latitud, lng: this.establecimiento[i].longitud};
+          var marker1 = this.establecimiento[i];
+          var marker = new google.maps.Marker({ 
+          position: placer,
+          map: map,
+          label: this.establecimiento[i].nombre,
+          icon: this.establecimiento[i].icono
+          });
+          (function(marker,marker1){
+          google.maps.event.addListener(marker,"click", function(e){
+            var contentString =
+            '<b>'+marker1.nombre+'</b>' +
+            '<p> '+marker1.descripcion+'</p>';
+            var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+            infowindow.open(map,marker);
+
+       });
+    })(marker,marker1);
+  }
   
+
+
    var stations = [];
       stations.push(new google.maps.LatLng(6.337804,-75.544299)); //Niquia
       stations.push(new google.maps.LatLng(6.330673, -75.553296));  //Bello
