@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ProximosTrenesPage } from '../proximos-trenes/proximos-trenes';
+import { TrenPage } from '../tren/tren';
 declare var google;
 declare var map;
 @Component({
@@ -238,8 +239,9 @@ googleMap(){
       metroplus.push(new google.maps.LatLng(6.231656, -75.586587));//Fatima
       metroplus.push(new google.maps.LatLng(6.231832, -75.582091));//Nutibara
       metroplus.push(new google.maps.LatLng(6.230462, -75.576732));//Industriales 2
-            
-<<<<<<< HEAD
+      var polyLineOptions2 ={path : metroplus, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
+      var polyLine2 = new google.maps.Polyline(polyLineOptions2);
+      polyLine2.setMap(map);
       
       
   }
@@ -261,12 +263,8 @@ googleMap(){
     var x2=new google.maps.LatLng(6.222377, -75.576823);//poblado
     var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
     console.log("distancia entre exposiciones y proximo tren "+ distancia);
-=======
-        var polyLineOptions2 ={path : metroplus, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
-      var polyLine2 = new google.maps.Polyline(polyLineOptions2);
-      polyLine2.setMap(map);
-
->>>>>>> a63b05335db1a2b40bf20dd5ade775c6be4b4f77
+      
+    this.navCtrl.push(TrenPage);
 
   }
 }

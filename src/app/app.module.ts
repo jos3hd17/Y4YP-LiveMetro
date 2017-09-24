@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProximosTrenesPage } from '../pages/proximos-trenes/proximos-trenes';
 import { TrenesProvider } from '../providers/trenes/trenes';
+import { TrenPage } from '../pages/tren/tren';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { TrenesProvider } from '../providers/trenes/trenes';
     HomePage,
     ListPage,
     CivicaPage,
-    ProximosTrenesPage
+    ProximosTrenesPage,
+    TrenPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { TrenesProvider } from '../providers/trenes/trenes';
     HomePage,
     ListPage,
     CivicaPage,
-    ProximosTrenesPage
+    ProximosTrenesPage,
+    TrenPage
   ],
   providers: [
     StatusBar,

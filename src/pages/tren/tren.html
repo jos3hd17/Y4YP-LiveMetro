@@ -7,12 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tren</ion-title>
+    <ion-title>tren linea  hacía {{tren.direccion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+    
+    <ion-card >
+     
+        <div class="card-title"> capacidad max: {{tren.vagones.v1.capacidad_max}}</div>
+        <div class="card-subtitle">capacidad actual: {{tren.vagones.v1.capacidad_actual}}</div>
+         
+    </ion-card>
 </ion-content>
