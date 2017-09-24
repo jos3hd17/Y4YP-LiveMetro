@@ -1,3 +1,22 @@
 page-civica {
+    .input{
+        background-color: light;
+        border-radius: 2px;
+        margin: 2px;
+        text-align: center;
+        padding: 2px;
+        .input-background{
+            background-color: whitesmoke;
+            padding: 2px;
+            margin: 2px;
+            .number{
+                margin-right: -30%;
+                margin-left: 10%
+            }
+            .button{
+                margin-left:25%;
+            }
+        }
+    }
 
 }

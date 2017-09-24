@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ProximosTrenesPage } from '../proximos-trenes/proximos-trenes';
 import { TrenPage } from '../tren/tren';
 declare var google;
@@ -11,7 +11,7 @@ declare var map;
 export class HomePage {
 
   ubi: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCrtl: ViewController, public alertCtrl: AlertController ) {
     let that = this;
     setTimeout(function(){
       that.googleMap();
@@ -19,8 +19,7 @@ export class HomePage {
     this.ubi = "6.244203, -75.581212";
 
   }
-     
-     estaciones =[
+  estaciones =[
         {
           nombre: "Niquia",
           latitude: 6.337804,
@@ -167,34 +166,53 @@ export class HomePage {
           longitude: -75.576732
         },
       ]
-googleMap(){
-    
+
+      metro=[
+        {
+          identificacion: "001 VERDE",
+          latitude:6.334577,
+          longitude:-75.548287
+        }
+      ]
+
+
+  googleMap(){
   var str = this.ubi; 
   var splitted = str.split(",", 2); 
   var latitude= +splitted[0];
   var longitude= +splitted [1];
-
-  console.log(splitted)
-
-
-
-
-     var place ={lat: latitude, lng: longitude};
-     var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
+  var place ={lat: latitude, lng: longitude};
+  var mapDiv = document.getElementById('map');
+  var map = new google.maps.Map(mapDiv, {
           zoom: 12,
           center: place
         });
-     
-        for (var i=0; i< this.estaciones.length;i++){
+  for (var i=0; i< this.estaciones.length;i++){
           var places = {lat: this.estaciones[i].latitude, lng: this.estaciones[i].longitude};
           var marker = new google.maps.Marker({ 
           position: places,
           map: map,
           label: this.estaciones[i].nombre,
-          icon: "../assets/station.png"
+          icon: "../assets/house.png"
         });
-        }
+  }
+  for (var i=0; i< this.metro.length;i++){
+          var placer = {lat: this.metro[i].latitude, lng: this.metro[i].longitude};
+          var marker1 = this.metro[i];
+          var marker = new google.maps.Marker({ 
+          position: placer,
+          map: map,
+          label: this.metro[i].identificacion,
+          icon: "../assets/train.png"
+          });
+          (function(marker,marker1){
+          google.maps.event.addListener(marker,"click", function(e){
+            console.log("que dicen los hijueputas");
+            
+          });
+
+          })(marker,marker1);
+  }
    var stations = [];
       stations.push(new google.maps.LatLng(6.337804,-75.544299)); //Niquia
       stations.push(new google.maps.LatLng(6.330673, -75.553296));  //Bello
@@ -222,14 +240,9 @@ googleMap(){
       stations.push(new google.maps.LatLng(6.163212,-75.605915)); //Itagui 
       stations.push(new google.maps.LatLng(6.157366,-75.616708)); //Sabaneta 
       stations.push(new google.maps.LatLng(6.152694,-75.626493)); //La estrella
-      
-      
-      
-
       var polyLineOptions ={path : stations, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
       var polyLine = new google.maps.Polyline(polyLineOptions);
       polyLine.setMap(map);
-
       var metroplus = [];
       metroplus.push(new google.maps.LatLng(6.230835, -75.609283));//Udem
       metroplus.push(new google.maps.LatLng(6.231070, -75.605121));//Los alpes
