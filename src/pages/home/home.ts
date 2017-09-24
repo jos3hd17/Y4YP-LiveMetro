@@ -169,6 +169,67 @@ estaciones =[
           latitude: 6.230462,  
           longitude: -75.576732
         },
+        {
+          nombre: "Aranjuez",
+          latitude: 6.285844,  
+          longitude: -75.555832
+        },
+        {
+          nombre: "Berlin",
+          latitude: 6.282986,  
+          longitude: -75.552957
+        },
+        {
+          nombre: "Las Esmeraldas",
+          latitude: 6.278305,  
+          longitude: -75.553263
+        },
+        {
+          nombre: "Manrique",
+          latitude: 6.273228,  
+          longitude: -75.554078
+        },
+        {
+          nombre: "Gardel",
+          latitude:6.267709,  
+          longitude: -75.555060
+        },
+        {
+          nombre: "Palos verdes",
+          latitude:6.262073,  
+          longitude: -75.555886
+        },
+        {
+          nombre: "Hospital B",
+          latitude:6.263907,  
+          longitude: -75.563155
+        },
+        {
+          nombre: "UdeA",
+          latitude:6.263875,  
+          longitude: -75.567682
+        },
+        {
+          nombre: "Chagualo",
+          latitude:6.260799,  
+          longitude:-75.569160
+        },
+        {
+          nombre: "Minorista",
+          latitude:6.256037,  
+          longitude: -75.573197
+        },
+        {
+          nombre: "Cisneros",
+          latitude:6.250544,  
+          longitude: -75.575134
+        },
+        {
+          nombre: "Plaza Mayor",
+          latitude:6.243647,  
+          longitude:-75.575354
+        }
+
 ]
 
 metro=[
@@ -283,7 +344,7 @@ metro=[
       stations.push(new google.maps.LatLng(6.163212,-75.605915)); //Itagui 
       stations.push(new google.maps.LatLng(6.157366,-75.616708)); //Sabaneta 
       stations.push(new google.maps.LatLng(6.152694,-75.626493)); //La estrella
-      var polyLineOptions ={path : stations, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
+      var polyLineOptions ={path : stations, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:7};
       var polyLine = new google.maps.Polyline(polyLineOptions);
       polyLine.setMap(map);
       var metroplus = [];
@@ -295,11 +356,34 @@ metro=[
       metroplus.push(new google.maps.LatLng(6.231656, -75.586587));//Fatima
       metroplus.push(new google.maps.LatLng(6.231832, -75.582091));//Nutibara
       metroplus.push(new google.maps.LatLng(6.230462, -75.576732));//Industriales 2
-      var polyLineOptions2 ={path : metroplus, strokeColor: "#070707",strokeOpacity: 0.9, strokeWeight:5};
+      metroplus.push(new google.maps.LatLng(6.243647, -75.575354));//Plaza Mayor
+      metroplus.push(new google.maps.LatLng(6.250544, -75.575134));//Cisneros
+      metroplus.push(new google.maps.LatLng(6.256037, -75.573197));//Minorista
+      metroplus.push(new google.maps.LatLng(6.260799, -75.569160));//Chagualo
+      metroplus.push(new google.maps.LatLng(6.263875, -75.567682));//UdeA
+      metroplus.push(new google.maps.LatLng(6.263907, -75.563155));//Hospital B
+      metroplus.push(new google.maps.LatLng(6.262073, -75.555886));//Palos verdes
+      metroplus.push(new google.maps.LatLng(6.267709, -75.555060));//Gardel
+      metroplus.push(new google.maps.LatLng(6.273228, -75.554078));//Manrique
+      metroplus.push(new google.maps.LatLng(6.278305, -75.553263));//Las esmeraldas
+      metroplus.push(new google.maps.LatLng(6.282986, -75.552957));//Berlin
+      metroplus.push(new google.maps.LatLng(6.285844, -75.555832));//Aranjuez
+      
+
+      var polyLineOptions2 ={path : metroplus, strokeColor: "#0415FA",strokeOpacity: 0.9, strokeWeight:7};
       var polyLine2 = new google.maps.Polyline(polyLineOptions2);
       polyLine2.setMap(map);
-      
-      
+      var trayecto =[];
+      trayecto.push(new google.maps.LatLng(6.285733, -75.556574)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.284384, -75.554321)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.284384, -75.554321)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.282169, -75.552889)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.282169, -75.552889)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.280473, -75.552794)) //CR49AxCL94
+      trayecto.push(new google.maps.LatLng(6.276187, -75.553545)) //CR49AxCL94
+      var polyLineOptions3 = {path: trayecto, strokeColor: "#F80602", strokeOpacity: 0.9, strokeWeight:7};
+      var polyLine3 = new google.maps.Polyline(polyLineOptions3);
+      polyLine3.setMap(map);
   }
 
    ir(){
