@@ -5,14 +5,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>CivicaPage</ion-title>
+<ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Vive tu civica</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content color="light">
+  
+  <div class="input">
+    <h3>Ingresa por favor tu numero de documento</h3>
+     <div class="input-background">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="number"><ion-input floating type="number"></ion-input></ion-col>
+          <ion-col class="button"><button ion-button>Buscar</button></ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+        
+     </div>
+  </div>
+    <hr>
+ 
 
 </ion-content>
